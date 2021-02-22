@@ -8,7 +8,7 @@
 napi_value IsProcessRunning(napi_env env, napi_callback_info info)
 {
   napi_status status;
-  size_t argc = 1;
+  size_t argc = 2;
   napi_value argv[2];
   napi_value napiResult;
 
@@ -28,12 +28,14 @@ napi_value IsProcessRunning(napi_env env, napi_callback_info info)
   status = napi_get_value_int32(env, argv[0], &processPid);
 
   if (status != napi_ok) {
+    printf("---%d---", (int)status);
     napi_throw_error(env, NULL, "Invalid processId was passed as argument");
   }
 
-  status = napi_get_value_string_latin1(env, argv[1], processNameA, 1000, &processNameARead);
+  status = napi_get_value_string_utf8(env, argv[1], processNameA, 1000, &processNameARead);
 
   if (status != napi_ok) {
+    printf("---%d---", (int)status);
     napi_throw_error(env, NULL, "Invalid processName was passed as argument");
   }
 
@@ -82,6 +84,7 @@ napi_value IsProcessRunning(napi_env env, napi_callback_info info)
   status = napi_create_int32(env, result, &napiResult);
 
   if (status != napi_ok) {
+    printf("---%d---", (int)status);
     napi_throw_error(env, NULL, "Unable to create return value");
   }
 
@@ -95,11 +98,13 @@ napi_value Init(napi_env env, napi_value exports) {
 
   status = napi_create_function(env, NULL, 0, IsProcessRunning, NULL, &fn);
   if (status != napi_ok) {
+    printf("---%d---", (int)status);
     napi_throw_error(env, NULL, "Unable to wrap IsProcessRunning native function");
   }
 
   status = napi_set_named_property(env, exports, "is_process_running", fn);
   if (status != napi_ok) {
+    printf("---%d---", (int)status);
     napi_throw_error(env, NULL, "Unable to populate is_process_running exports");
   }
 
