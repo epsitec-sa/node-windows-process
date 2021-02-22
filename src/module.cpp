@@ -55,17 +55,20 @@ napi_value IsProcessRunning(napi_env env, napi_callback_info info)
         if (!GetProcessImageFileName (handle, procNameBuffer, 10000))
         {
           CloseHandle (handle);
-          throw std::exception ("Could not get webservice process name");
+          result = -1;
         }
-        CloseHandle (handle);
-
-        std::string processName(processNameA);
-        std::string processPath(procNameBuffer);
-
-        if (processPath.find (processName) == std::string::npos)
+        else
         {
-          // Process with pid found, but different name
-          result = 0;
+          CloseHandle (handle);
+
+          std::string processName(processNameA);
+          std::string processPath(procNameBuffer);
+
+          if (processPath.find (processName) == std::string::npos)
+          {
+            // Process with pid found, but different name
+            result = 0;
+          }
         }
       }
     }
