@@ -3,8 +3,15 @@
   "version": "0.1.0",
   "description": "https://github.com/epsitec-sa/node-windows-process",
   "main": "module.js",
+  "os": [
+    "win32"
+  ],
+  "devDependencies": {
+    "node-gyp": "^3.0.3"
+  },
   "scripts": {
-    "start": "node-gyp configure build && node module.js",
+    "configure": "node-gyp configure",
+    "build": "node-gyp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
