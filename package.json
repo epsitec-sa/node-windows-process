@@ -7,12 +7,13 @@
     "win32"
   ],
   "devDependencies": {
+    "mocha": "^2.3.3",
     "node-gyp": "^3.0.3"
   },
   "scripts": {
     "configure": "node-gyp configure",
     "build": "node-gyp build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
