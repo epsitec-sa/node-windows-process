@@ -1,0 +1,23 @@
+{
+  "name": "node-windows-process",
+  "version": "0.1.0",
+  "description": "https://github.com/epsitec-sa/node-windows-process",
+  "main": "module.js",
+  "scripts": {
+    "start": "node-gyp configure build && node module.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epsitec-sa/node-windows-process.git"
+  },
+  "engines": {
+    "node": ">=8.4.0"
+  },
+  "author": "Jonny Quarta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epsitec-sa/node-windows-process/issues"
+  },
+  "homepage": "https://github.com/epsitec-sa/node-windows-process#readme"
+}
