@@ -10,4 +10,4 @@ function isProcessRunning(processPid, processName) {
   return res === 1 ? true : false;
 }
 
-module.exports.IsProcessRunning = isProcessRunning;
+module.exports.isProcessRunning = isProcessRunning;
