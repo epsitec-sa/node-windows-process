@@ -49,6 +49,7 @@ napi_value IsProcessRunning(napi_env env, napi_callback_info info)
       DWORD cr;
       if ((GetExitCodeProcess (handle, &cr) == 0) || (cr != STILL_ACTIVE))
       {
+        CloseHandle (handle);
         // Process with pid is not running
         result = 0;
       }
